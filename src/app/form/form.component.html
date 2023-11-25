@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()">
+    <label for="username">Podaj nazwę użytkownika:</label>
+    <input id="username" type="text" userForm="username" required>
+    <div
+    *ngIf="username?.invalid && (username?.dirty || username?.touched)"
+  class="alert alert-danger"
+>
+    <div *ngIf="username?.errors?.['minlength']">
+      Name must be at least 4 characters long.
+    </div>
+    </div>
+    <br>
+    Podaj imię: <input type="text" userForm="name">
+    <br>
+    Podaj hasło: <input type="text" class="form-control" userForm="password">
+    <br>
+    Podaj wzrost: <input type="text" class="form-control" userForm="height">
+    <br>
+    Podaj wagę: <input type="text" class="form-control" userForm="weight">
+    <br>
+    Podaj wiek: <input type="text" class="form-control" userForm="age">
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+  
