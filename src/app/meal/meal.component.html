@@ -1,1 +1,45 @@
-<p>meal works!</p>
+<div class="form">
+    <h2 id="initial_data">Formularz</h2>
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+        <label for="useraname">Nazwa użytkownika</label>
+        <input type="text" id="useraname" formControlName="username">
+
+        <br>
+
+        <label for="password">Hasło</label>
+        <input type="text" id="password" formControlName="password">
+
+        <br>
+
+        <label for="name">Imię</label>
+        <input type="text" id="name" formControlName="name">
+
+        <br>
+
+        <label for="weight">Waga</label>
+        <input type="text" id="weight" formControlName="weight">
+
+        <br>
+        
+        <label for="height">Wzrost</label>
+        <input type="text" id="height" formControlName="height">
+
+        <br>
+        
+        <label for="age">Wiek</label>
+        <input type="text" id="age" formControlName="age">
+
+        <br>
+        
+        <label for="goal">Cel</label>
+        <select id="goal" formControlName="name">
+            <option value="a"></option>
+            <option value="b"></option>
+            <option value="c"></option>
+        </select>
+
+        <br>
+
+        <input type="submit" value="Submit" id="btn">
+    </form>
+</div>
