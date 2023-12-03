@@ -23,7 +23,9 @@ export class FormComponent implements OnInit{
         weight: new FormControl(null, [Validators.required, Validators.min(2), Validators.max(600), Validators.pattern('[0-9]*')]),
         height: new FormControl(null, [Validators.required, Validators.min(30), Validators.max(350), Validators.pattern('[0-9]*')]),
         age: new FormControl(null, [Validators.required, Validators.min(12), Validators.max(130), Validators.pattern('[0-9]*')]),
-        goal: new FormControl(null, [Validators.required,])
+        goal: new FormControl(null, [Validators.required,]),
+        gender: new FormControl(null, Validators.required),
+        activityLevel: new FormControl(null, Validators.required),
       });
   }
 
