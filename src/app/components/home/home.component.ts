@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from '../user';
-import { CalculateService } from '../calculate.service';
+import { User } from '../../user';
+import { CalculateService } from 'src/app/services/calculate.service';
 
 @Component({
   selector: 'app-home',
