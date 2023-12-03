@@ -1,45 +1,89 @@
 <div class="form">
   <h2 id="initial_data">Formularz</h2>
+  
   <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
       <label for="useraname">Nazwa użytkownika</label>
       <input type="text" id="useraname" formControlName="username">
+
+      <div style="color: red"
+      *ngIf="!reactiveForm.get('username').valid && reactiveForm.get('username').touched">
+      Nazwa użytkownika powinna mieć długość od 2 do 30 znaków oraz zawierać tylko litery</div>
 
       <br>
 
       <label for="password">Hasło</label>
       <input type="text" id="password" formControlName="password">
 
+      <div style="color: red"
+      *ngIf="!reactiveForm.get('password').valid && reactiveForm.get('password').touched">
+      Hasło powinno mieć długość od 8 do 30 znaków oraz zawierać przynajmniej 1 wielką literę, 1 cyfrę oraz 1
+      znak specjalny</div>
+
       <br>
 
       <label for="name">Imię</label>
       <input type="text" id="name" formControlName="name">
+
+      <div style="color: red"
+      *ngIf="!reactiveForm.get('name').valid && reactiveForm.get('name').touched">
+      Imię powinno mieć długość od 2 do 30 znaków i zawierać tylko litery z czego pierwszą, wielką</div>
 
       <br>
 
       <label for="weight">Waga</label>
       <input type="text" id="weight" formControlName="weight">
 
+      <div style="color: red"
+      *ngIf="!reactiveForm.get('weight').valid && reactiveForm.get('weight').touched">
+      Waga powinna być pomiędzy 2 a 600kg oraz zawierać tylko cyfry</div>
+
       <br>
       
       <label for="height">Wzrost</label>
       <input type="text" id="height" formControlName="height">
+
+      <div style="color: red"
+      *ngIf="!reactiveForm.get('height').valid && reactiveForm.get('height').touched">
+      Wzrost powinien być pomiędzy 30 a 350cm oraz zawierać tylko cyfry</div>
 
       <br>
       
       <label for="age">Wiek</label>
       <input type="text" id="age" formControlName="age">
 
+      <div style="color: red"
+      *ngIf="!reactiveForm.get('age').valid && reactiveForm.get('age').touched">
+      Wiek powinien być pomiędzy 12 a 130 oraz zawierać tylko cyfry</div>
+
       <br>
       
       <label for="goal">Cel</label>
-      <select id="goal" formControlName="name">
-          <option value="a"></option>
-          <option value="b"></option>
-          <option value="c"></option>
+      <select id="goal" formControlName="goal">
+          <option value="schudnac">schudnac</option>
+          <option value="utrzymac wage">utrzymac wage</option>
+          <option value="przytyc">przytyc</option>
       </select>
+
+      <div style="color: red"
+      *ngIf="!reactiveForm.get('goal').valid && reactiveForm.get('goal').touched">
+      Musisz wybrać cel</div>
 
       <br>
 
       <input type="submit" value="Submit" id="btn">
+      <div style="color: red"
+      *ngIf="isSubmitted &&
+      (reactiveForm.get('username').invalid && reactiveForm.get('username').value===null ||
+      reactiveForm.get('password').invalid && reactiveForm.get('password').value===null || 
+      reactiveForm.get('name').invalid && reactiveForm.get('name').value===null ||
+      reactiveForm.get('weight').invalid && reactiveForm.get('weight').value===null ||
+      reactiveForm.get('height').invalid && reactiveForm.get('height').value===null ||
+      reactiveForm.get('age').invalid && reactiveForm.get('age').value===null ||
+      reactiveForm.get('goal').invalid && reactiveForm.get('goal').value===null)">
+      Poprawnie uzupełnij wszystkie pola</div>
   </form>
+
+  <!-- <div *ngIf="isValid">
+    <app-home></app-home>
+  </div> -->
 </div>
