@@ -60,13 +60,30 @@
       <label for="goal">Cel</label>
       <select id="goal" formControlName="goal">
           <option value="schudnac">schudnac</option>
-          <option value="utrzymac wage">utrzymac wage</option>
+          <option value="utrzymac">utrzymac wage</option>
           <option value="przytyc">przytyc</option>
       </select>
 
       <div style="color: red"
       *ngIf="!reactiveForm.get('goal').valid && reactiveForm.get('goal').touched">
       Musisz wybrać cel</div>
+
+      <br>
+
+      <label for="gender">Płeć</label>
+      <input type="radio" id="male" value="m" formControlName="gender">mężczyzna
+      <input type="radio" id="female" value="k" formControlName="gender">kobieta
+
+      <br>
+
+      <label for="activityLevel">Poziom aktywności</label>
+      <select id="activityLevel" formControlName="activityLevel">
+          <option value="niski">niski poziom aktywności</option>
+          <option value="lekki">lekki poziom aktywności -> 1-3 treningi/tydzień</option>
+          <option value="umiarkowany">umiarkowany poziom aktywności -> 3-5 treningów/tydzień</option>
+          <option value="wysoki">wysoki poziom aktywności -> 6-7 treningów/tydzień</option>
+          <option value="ultra">najwyższy poziom aktywności -> 2 treningi/dzień lub praca fizyczna</option>
+      </select>
 
       <br>
 
