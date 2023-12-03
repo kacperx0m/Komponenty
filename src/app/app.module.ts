@@ -3,17 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { MealComponent } from './meal/meal.component';
-import { FormComponent } from './form/form.component';
-import { HomeComponent } from './home/home.component';
+import { MealComponent } from './components/meal/meal.component';
+import { FormComponent } from './components/form/form.component';
+import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MealComponent,
     FormComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { User } from '../user';
+import { User } from '../../user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -33,9 +33,7 @@ export class FormComponent implements OnInit{
   onSubmit() {
     this.isSubmitted = true;
     if (this.reactiveForm.valid){
-      console.log(this.reactiveForm);
-      console.log("przeslano formularz");
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
     } else {
       console.log("formularz jest bledny");
     }
