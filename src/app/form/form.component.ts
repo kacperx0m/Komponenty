@@ -9,33 +9,18 @@ import { User } from '../user';
 })
 export class FormComponent implements OnInit{
 
-  userForm!: FormGroup;
+  reactiveForm: FormGroup; //teraz bez bledu bo ustawione w tsconfig json
 
   ngOnInit(): void {
-    this.userForm = new FormGroup({
-      username: new FormControl('', [
-        Validators.required,
-        Validators.minLength(4)
-      ]),
-      name: new FormControl('', Validators.required),
-      password: new FormControl(''),
-      height: new FormControl(''),
-      weight: new FormControl(''),
-      age: new FormControl(''),
-    });;
-  }
- 
-
-  
-  get username() {
-    return this.userForm.get('username');
+      this.reactiveForm = new FormGroup({
+        username: new FormControl(null, Validators.required),
+        password: new FormControl(null, Validators.required),
+        name: new FormControl(null, Validators.required),
+      });
   }
 
   onSubmit() {
-    if (this.userForm.valid) {
-      console.log('Form submitted!', this.userForm.value);
-    } else {
-      console.log('Form is invalid. Please check the fields.');
-    }
+    console.log(this.reactiveForm);
+    console.log("przeslano formularz");
   }
 }

@@ -1,25 +1,45 @@
-<form (ngSubmit)="onSubmit()">
-    <label for="username">Podaj nazwę użytkownika:</label>
-    <input id="username" type="text" userForm="username" required>
-    <div
-    *ngIf="username?.invalid && (username?.dirty || username?.touched)"
-  class="alert alert-danger"
->
-    <div *ngIf="username?.errors?.['minlength']">
-      Name must be at least 4 characters long.
-    </div>
-    </div>
-    <br>
-    Podaj imię: <input type="text" userForm="name">
-    <br>
-    Podaj hasło: <input type="text" class="form-control" userForm="password">
-    <br>
-    Podaj wzrost: <input type="text" class="form-control" userForm="height">
-    <br>
-    Podaj wagę: <input type="text" class="form-control" userForm="weight">
-    <br>
-    Podaj wiek: <input type="text" class="form-control" userForm="age">
-    <br>
-    <button type="submit">Submit</button>
+<div class="form">
+  <h2 id="initial_data">Formularz</h2>
+  <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+      <label for="useraname">Nazwa użytkownika</label>
+      <input type="text" id="useraname" formControlName="username">
+
+      <br>
+
+      <label for="password">Hasło</label>
+      <input type="text" id="password" formControlName="password">
+
+      <br>
+
+      <label for="name">Imię</label>
+      <input type="text" id="name" formControlName="name">
+
+      <br>
+
+      <label for="weight">Waga</label>
+      <input type="text" id="weight" formControlName="weight">
+
+      <br>
+      
+      <label for="height">Wzrost</label>
+      <input type="text" id="height" formControlName="height">
+
+      <br>
+      
+      <label for="age">Wiek</label>
+      <input type="text" id="age" formControlName="age">
+
+      <br>
+      
+      <label for="goal">Cel</label>
+      <select id="goal" formControlName="name">
+          <option value="a"></option>
+          <option value="b"></option>
+          <option value="c"></option>
+      </select>
+
+      <br>
+
+      <input type="submit" value="Submit" id="btn">
   </form>
-  
+</div>
