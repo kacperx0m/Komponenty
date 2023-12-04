@@ -84,6 +84,9 @@
           <option value="wysoki">wysoki poziom aktywności -> 6-7 treningów/tydzień</option>
           <option value="ultra">najwyższy poziom aktywności -> 2 treningi/dzień lub praca fizyczna</option>
       </select>
+      <div style="color: red"
+      *ngIf="!reactiveForm.get('activityLevel').valid && reactiveForm.get('activityLevel').touched">
+      Musisz wybrać poziom aktywności</div>
 
       <br>
 
@@ -96,7 +99,9 @@
       reactiveForm.get('weight').invalid && reactiveForm.get('weight').value===null ||
       reactiveForm.get('height').invalid && reactiveForm.get('height').value===null ||
       reactiveForm.get('age').invalid && reactiveForm.get('age').value===null ||
-      reactiveForm.get('goal').invalid && reactiveForm.get('goal').value===null)">
+      reactiveForm.get('goal').value===null ||
+      reactiveForm.get('gender').value===null ||
+      reactiveForm.get('activityLevel').value===null)">
       Poprawnie uzupełnij wszystkie pola</div>
   </form>
 
