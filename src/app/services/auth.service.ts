@@ -11,7 +11,7 @@ import {
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn = true;
+  isLoggedIn = false;
   
   constructor() { }
 
