@@ -1,8 +1,8 @@
-export enum Type {
-    calorific_value,
-    fats,
-    carbohydrates,
-    sugars,
-    proteins,
-    salt,
+interface Type {
+  calorific_value: number;
+  fats: number;
+  carbohydrates: number;
+  sugars: number;
+  proteins: number;
+  salt: number;
 }
