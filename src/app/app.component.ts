@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Goal } from './goal.enum';
+// import { Goal } from './goal';
 
 @Component({
   selector: 'app-root',
