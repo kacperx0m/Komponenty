@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../../user';
 import { Router } from '@angular/router';
+import { CalculateService } from 'src/app/services/calculate.service';
 
 @Component({
   selector: 'app-form',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit{
-
+  user: User;
   reactiveForm: FormGroup; //teraz bez bledu bo ustawione w tsconfig json
   passwordPattern = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,30}$/;
   isSubmitted = false;
@@ -29,12 +30,27 @@ export class FormComponent implements OnInit{
       });
   }
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private calculateService: CalculateService){}
+
 
   // do optymalizacji
   onSubmit() {
     this.isSubmitted = true;
     if (this.reactiveForm.valid){
+      this.user = {};
+      Object.assign(this.user, this.reactiveForm.value);
+
+      const weight = this.user.weight;
+      const height = this.user.height;
+      const age = this.user.age;
+      const gender = this.user.gender;
+      const activityLevel = this.user.activityLevel;
+      this.calculateService.calculateBMI(weight, height);
+      this.calculateService.calculateBMR(gender, age, weight, height);
+      this.calculateService.calculateTDEE(activityLevel, gender, weight, height, age);
+
+      this.calculateService.setUser(this.user);
+
       this.router.navigate(['/login']);
     } else {
       console.log("formularz jest bledny");

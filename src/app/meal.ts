@@ -1,4 +1,5 @@
 import { Ingredient } from "./ingredient";
+import { MealType } from "./mealType.enum";
 import { Nutrition } from "./nutrition";
 
 export interface Meal {

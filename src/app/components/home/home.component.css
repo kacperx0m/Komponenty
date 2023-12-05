@@ -1,0 +1,46 @@
+.topPanel {
+    top: auto;
+}
+
+.bottomPanel {
+    /* position: fixed;
+    bottom: 0; */
+}
+
+.bodyDetails {
+    margin-top: 20px;
+}
+
+.callendar {
+    height: 100px;
+    width: 300px;
+    background-color: antiquewhite;
+}
+
+.rightPanel {
+    background-color: #f4f4f4;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* align-self: flex-end; */
+    position: fixed;
+    right: 0;
+}
+
+footer {
+    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+header, main, footer {
+    flex: 1;
+    padding: 1em;
+}

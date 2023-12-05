@@ -1,15 +1,59 @@
-<h1>Witaj {{user.name}}</h1>
-<p>Twój cel to : {{user.goal}}</p>
-Twój wskaźnik BMI wynosi:
-{{userBMI}}
-Co umiejscawia Cię w kategorii
-{{jakasKategoriaCzyCos}}
+<header>
+<div class="topPanel">
+    <h1 id="welcome">Witaj <span id="userName">{{user.name}}</span></h1>
+    <p>Twój cel to : <span id="userGoal">{{user.goal}}</span></p>
+</div>
+</header>
 
-Twój podstawowy metabolizm:
-{{userBMR}}
-Uwzględniając Twój poziom aktywności, aby {{user.goal}}, potrzebujesz
-przyjmować {{userTDEE}} kalorii dziennie
+<main>
+<div class="bodyDetails">
+    <p>Twój wskaźnik BMI wynosi:
+    {{userBMI | number:'1.0-2'}}</p>
 
+    
+
+    <p>Co umiejscawia Cię w kategorii
+    <span id="userCategory">{{jakasKategoriaCzyCos}}</span>
+    <!--  BMI of 25.0 or more is overweight, while the healthy range is 18.5 to 24.9
+    over 30 is obese 
+    under is underweight-->
+    kategoria</p>
+
+    
+
+    <p>Twój podstawowy metabolizm:
+    {{userBMR | number:'1.0-0'}}
+    kalorii na dzień</p>
+
+    
+
+    <p>Uwzględniając Twój poziom aktywności, aby {{user.goal}}, potrzebujesz
+    przyjmować {{userTDEE | number:'1.0-0'}} kalorii dziennie</p>
+</div>
+
+
+<div class="callendar">
+    Kalendarz
+</div>
+
+
+
+<div class="bottomPanel">
+    <p>Spożyłeś dzisiaj już <span id="caloriesIntake">1234</span> kalorii</p>
+    <p>co stanowi <span>{{userCalories | number:'1.0-0'}}/100</span>%</p>
+</div>
+
+</main>
+
+<div class="righPanel">
+    Prawy panel
+</div>
+
+
+
+<footer>
+    Planer diety by Kacper Góralczyk, Dawid Dłuski, Maciej Borys. All rights reserved
+</footer>
 <!-- 
     jest jeszcze formula na idealna wage, mozna dodac
     
