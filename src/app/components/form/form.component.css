@@ -1,3 +1,26 @@
 input.ng-invalid.ng-touched{
   border: red 1px solid;
 }
+.form {
+  text-align: center;
+}
+h2 {
+  color: black;
+  opacity: .6;
+}
+input[type=text] {
+  width: 390px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+input[type=submit] {
+  width: 390px;
+  background-color: #2fb4e9;
+  color: white;
+  padding: 14px 20px;
+  margin: 30px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
