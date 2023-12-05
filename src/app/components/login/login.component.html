@@ -1,13 +1,11 @@
 <div class="form">
     <h1>Zaloguj się</h1>
     <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
-        <label for="useraname">Nazwa użytkownika</label>
-        <input type="text" id="useraname" formControlName="username">
+        <input type="text" id="useraname" formControlName="username" placeholder="Nazwa użytkownika">
         <br>
-        <label for="password">Hasło</label>
-        <input type="text" id="password" formControlName="password">
+        <input type="text" id="password" formControlName="password" placeholder="Hasło">
         <br>
         <input type="submit" value="Zaloguj" id="btn">
     </form>
-    <button (click)="register()">Rejestracja</button>
+    <a (click)="register()">Rejestracja</a>
 </div>

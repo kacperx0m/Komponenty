@@ -2,7 +2,7 @@
   <h2 id="initial_data">Formularz</h2>
   
   <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
-      <label for="useraname">Nazwa użytkownika</label>
+      <label for="useraname">Nazwa użytkownika</label><br>
       <input type="text" id="useraname" formControlName="username">
 
       <div style="color: red"
@@ -11,7 +11,7 @@
 
       <br>
 
-      <label for="password">Hasło</label>
+      <label for="password">Hasło</label><br>
       <input type="text" id="password" formControlName="password">
 
       <div style="color: red"
@@ -21,7 +21,7 @@
 
       <br>
 
-      <label for="name">Imię</label>
+      <label for="name">Imię</label><br>
       <input type="text" id="name" formControlName="name">
 
       <div style="color: red"
@@ -30,7 +30,7 @@
 
       <br>
 
-      <label for="weight">Waga</label>
+      <label for="weight">Waga</label><br>
       <input type="text" id="weight" formControlName="weight">
 
       <div style="color: red"
@@ -39,7 +39,7 @@
 
       <br>
       
-      <label for="height">Wzrost</label>
+      <label for="height">Wzrost</label><br>
       <input type="text" id="height" formControlName="height">
 
       <div style="color: red"
@@ -48,7 +48,7 @@
 
       <br>
       
-      <label for="age">Wiek</label>
+      <label for="age">Wiek</label><br>
       <input type="text" id="age" formControlName="age">
 
       <div style="color: red"
@@ -57,7 +57,7 @@
 
       <br>
       
-      <label for="goal">Cel</label>
+      <label for="goal">Cel</label><br>
       <select id="goal" formControlName="goal">
           <option value="schudnac">schudnac</option>
           <option value="utrzymac">utrzymac wage</option>
@@ -70,13 +70,13 @@
 
       <br>
 
-      <label for="gender">Płeć</label>
+      <label for="gender">Płeć</label><br>
       <input type="radio" id="male" value="m" formControlName="gender">mężczyzna
       <input type="radio" id="female" value="k" formControlName="gender">kobieta
 
       <br>
 
-      <label for="activityLevel">Poziom aktywności</label>
+      <label for="activityLevel">Poziom aktywności</label><br>
       <select id="activityLevel" formControlName="activityLevel">
           <option value="niski">niski poziom aktywności</option>
           <option value="lekki">lekki poziom aktywności -> 1-3 treningi/tydzień</option>
@@ -87,7 +87,7 @@
 
       <br>
 
-      <input type="submit" value="Submit" id="btn">
+      <input type="submit" value="Zarejestruj" id="btn">
       <div style="color: red"
       *ngIf="isSubmitted &&
       (reactiveForm.get('username').invalid && reactiveForm.get('username').value===null ||
