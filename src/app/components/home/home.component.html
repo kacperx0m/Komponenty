@@ -40,7 +40,7 @@
     </div>
 
     <div class="today">
-        <p>{{ today }}</p>
+        <p>{{ daytoday }}</p>
         szczegóły
     </div>
 
@@ -56,6 +56,10 @@
     <p>Spożyłeś dzisiaj już <span id="caloriesIntake">1234</span> kalorii</p>
     <p>co stanowi <span>{{userCalories | number:'1.0-0'}}/100</span>%</p>
 </div>
+
+
+<div appDirective>Historia posiłkow:</div>
+<p>{{ today  | date:'fullDate'}} </p>
 
 <footer>
     Planer diety by Kacper Góralczyk, Dawid Dłuski, Maciej Borys. All rights reserved
@@ -87,7 +91,3 @@ sa podzialy protein/fats/carbs
 moderate carbs 30/35/35
 lower 40/40/20
 higher 30/20/50-->
-
-
-<div appDirective>Historia posiłkow:</div>
-<p>{{ today  | date:'fullDate'}} </p>

@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit{
   }
 
   currentDate: Date = new Date();
-  today: string = this.formatDate(this.currentDate);
+  daytoday: string = this.formatDate(this.currentDate);
   yesterday: string = this.formatDate(this.getPreviousDate(this.currentDate));
   tomorrow: string = this.formatDate(this.getNextDate(this.currentDate));
 
