@@ -7,19 +7,18 @@ import { Goal } from '../../data/enums/goal.enum';
 })
 export class CalculateService {
 
-  user: User = {
+  user: User = new User(
     
-      username: 'exampleUser',
-      password: 'examplePassword',
-      name: 'John Doe',
-      weight: 70,
-      height: 175,
-      age: 25,
-      goal: 0,
-      gender: 'm',
-      activityLevel: 'niski',
-    
-  };
+      'exampleUser',
+      'examplePassword',
+      'John Doe',
+      70,
+      175,
+      25,
+      Goal.utrzymac,
+      'm',
+      'niski',
+  );
   
 
   bmi: number;

@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit{
   userCalories: number;
   today: Date = new Date();
 
+  isRightPanelOpen: boolean = true;
+
   constructor(private calculateService: CalculateService) {}
 
   ngOnInit(): void {
@@ -29,4 +31,25 @@ export class HomeComponent implements OnInit{
     this.userCalories = this.calculateService.calculatePercentage(1234);
   }
 
+  togglePanel() {
+    this.isRightPanelOpen = !this.isRightPanelOpen;
+  }
+
+  currentDate: Date = new Date();
+  daytoday: string = this.formatDate(this.currentDate);
+  yesterday: string = this.formatDate(this.getPreviousDate(this.currentDate));
+  tomorrow: string = this.formatDate(this.getNextDate(this.currentDate));
+
+  private formatDate(date: Date): string {
+    const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', weekday: 'long' };
+    return date.toLocaleDateString('pl-PL', options);
+  }
+
+  private getPreviousDate(date: Date): Date {
+    return new Date(date.getTime() - 24 * 60 * 60 * 1000);
+  }
+
+  private getNextDate(date: Date): Date {
+    return new Date(date.getTime() + 24 * 60 * 60 * 1000);
+  }
 }
