@@ -1,3 +1,5 @@
+<div class="wrapper" [class.rightPanelOpen]="isRightPanelOpen">
+<div class="main">
 <header>
 <div class="topPanel">
     <h1 id="welcome">Witaj <span id="userName">{{user.name}}</span></h1>
@@ -5,7 +7,6 @@
 </div>
 </header>
 
-<main>
 <div class="bodyDetails">
     <p>Twój wskaźnik BMI wynosi:
     {{userBMI | number:'1.0-2'}}</p>
@@ -33,7 +34,20 @@
 
 
 <div class="callendar">
-    Kalendarz
+    <div class="yesterday">
+        <p>{{ yesterday }}</p>
+        szczegóły
+    </div>
+
+    <div class="today">
+        <p>{{ today }}</p>
+        szczegóły
+    </div>
+
+    <div class="tomorrow">
+        <p>{{ tomorrow }}</p>
+        szczegóły
+    </div>
 </div>
 
 
@@ -43,17 +57,27 @@
     <p>co stanowi <span>{{userCalories | number:'1.0-0'}}/100</span>%</p>
 </div>
 
-</main>
-
-<div class="righPanel">
-    Prawy panel
-</div>
-
-
-
 <footer>
     Planer diety by Kacper Góralczyk, Dawid Dłuski, Maciej Borys. All rights reserved
 </footer>
+
+</div> <!-- end of main -->
+
+<button class="rightPanelButton" type="button" (click)="togglePanel()">
+    <span>=</span>
+</button>
+
+<div class="rightPanel">
+    Prawy panel
+    <br>
+    Dzisiejsze posiłki:
+    <app-meal></app-meal>
+</div>
+
+
+</div>
+
+
 <!-- 
     jest jeszcze formula na idealna wage, mozna dodac
     
