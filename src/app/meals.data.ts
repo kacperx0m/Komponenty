@@ -16,7 +16,6 @@ export const MEALS:Meal[] = [
     ingredients: [INGREDIENTS[0],INGREDIENTS[1],INGREDIENTS[2]],
     name: "kanapka z maslem i jajkami",
     type: MealType.Breakfast,
-    //tutaj wstawic serwis ktory obliczy skladniki ingredientow
     nutritionals: calculateTotalNutrition([INGREDIENTS[0],INGREDIENTS[1],INGREDIENTS[2]])
   }
 ];

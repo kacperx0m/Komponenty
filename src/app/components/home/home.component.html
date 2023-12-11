@@ -10,22 +10,22 @@
     <p>Twój wskaźnik BMI wynosi:
     {{userBMI | number:'1.0-2'}}</p>
 
-    
+
 
     <p>Co umiejscawia Cię w kategorii
     <span id="userCategory">{{jakasKategoriaCzyCos}}</span>
     <!--  BMI of 25.0 or more is overweight, while the healthy range is 18.5 to 24.9
-    over 30 is obese 
+    over 30 is obese
     under is underweight-->
     kategoria</p>
 
-    
+
 
     <p>Twój podstawowy metabolizm:
     {{userBMR | number:'1.0-0'}}
     kalorii na dzień</p>
 
-    
+
 
     <p>Uwzględniając Twój poziom aktywności, aby {{user.goal}}, potrzebujesz
     przyjmować {{userTDEE | number:'1.0-0'}} kalorii dziennie</p>
@@ -47,6 +47,7 @@
 
 <div class="righPanel">
     Prawy panel
+    <app-meal></app-meal>
 </div>
 
 
@@ -54,12 +55,16 @@
 <footer>
     Planer diety by Kacper Góralczyk, Dawid Dłuski, Maciej Borys. All rights reserved
 </footer>
-<!-- 
+<!--
     jest jeszcze formula na idealna wage, mozna dodac
-    
+
     wedlug stronki jak przytyc to +500 kalorii
 a jak schudnac to -500
 sa podzialy protein/fats/carbs
 moderate carbs 30/35/35
 lower 40/40/20
 higher 30/20/50-->
+
+
+<div appDirective>Historia posiłkow:</div>
+<p>{{ today  | date:'fullDate'}} </p>

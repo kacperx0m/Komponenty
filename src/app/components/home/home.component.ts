@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit{
   userBMR: number;
   userTDEE: number;
   userCalories: number;
+  today: Date = new Date();
 
   constructor(private calculateService: CalculateService) {}
 
