@@ -1,4 +1,4 @@
-import { Goal } from "./goal.enum";
+import { Goal } from "../enums/goal.enum";
 
 export interface User {
     username?: string;

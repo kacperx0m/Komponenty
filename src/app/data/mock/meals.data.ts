@@ -1,10 +1,10 @@
 // meals.data.ts
-import { Ingredient } from './ingredient';
-import { Meal, } from './meal';
-import { Nutrition } from './nutrition';
-import { nutritionType } from './nutritionType.enum';
+import { Ingredient } from '../models/ingredient';
+import { Meal, } from '../models/meal';
+import { Nutrition } from '../models/nutrition';
+import { nutritionType } from '../enums/nutritionType.enum';
 import {INGREDIENTS} from './ingredient.data';
-import { MealType } from './mealType.enum';
+import { MealType } from '../enums/mealType.enum';
 
 
 

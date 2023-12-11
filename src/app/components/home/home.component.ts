@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../user';
-import { CalculateService } from 'src/app/services/calculate.service';
+import { User } from '../../data/models/user';
+import { CalculateService } from 'src/app/services/calculate/calculate.service';
 
 @Component({
   selector: 'app-home',

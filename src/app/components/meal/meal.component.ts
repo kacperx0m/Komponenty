@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Meal } from 'src/app/meal';
-import {MEALS} from 'src/app/meals.data'
+import { Meal } from 'src/app/data/models/meal';
+import {MEALS} from 'src/app/data/mock/meals.data'
 @Component({
   selector: 'app-meal',
   templateUrl: './meal.component.html',

@@ -1,5 +1,5 @@
-import { Ingredient } from "./ingredient";
-import { nutritionType } from "./nutritionType.enum";
+import { Ingredient } from "../models/ingredient";
+import { nutritionType } from "../enums/nutritionType.enum";
 
 export const INGREDIENTS:Ingredient[] = [
   {
