@@ -3,7 +3,7 @@ import { nutritionType } from "./nutritionType.enum";
 
 export const INGREDIENTS:Ingredient[] = [
   {
-    name: "jajko",
+    name: "Jajko",
     nutritionals: [
       {type:nutritionType.calorific_value,value:300},
         {type: nutritionType.proteins, value:8},
@@ -20,7 +20,7 @@ export const INGREDIENTS:Ingredient[] = [
   },
 
   {
-    name: "maslo",
+    name: "Maslo",
     nutritionals: [
       { type: nutritionType.fats, value: 81 },
       { type: nutritionType.proteins, value: 1 }

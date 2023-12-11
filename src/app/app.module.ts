@@ -9,6 +9,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
+import { DirectiveDirective } from './directive.directive';
+import { CapitalizePipe } from './capitalize.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { AuthService } from './services/auth.service';
     MealComponent,
     FormComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    DirectiveDirective,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,
