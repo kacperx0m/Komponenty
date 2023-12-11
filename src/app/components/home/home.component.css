@@ -1,46 +1,64 @@
-.topPanel {
-    top: auto;
+.wrapper {
+    display: flex;
+    height: 100vh;
+    background: #d6d1a8;
 }
 
-.bottomPanel {
-    /* position: fixed;
-    bottom: 0; */
+.main {
+    flex-grow: 1;
+    padding: 20px;
+    background: #e3dfc3;
 }
 
-.bodyDetails {
-    margin-top: 20px;
+.rightPanelButton {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: #8772f3;
 }
 
-.callendar {
-    height: 100px;
-    width: 300px;
-    background-color: antiquewhite;
+.rightPanelButton:hover {
+    background: #6b57cf;
 }
 
 .rightPanel {
-    background-color: #f4f4f4;
+    /* display: none; */
+    width: 200px;
+    flex-shrink: 0;
     padding: 20px;
-    width: 300px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* align-self: flex-end; */
-    position: fixed;
-    right: 0;
+    background: #8772f3;
+}
+
+.rightPanelOpen .rightPanel{
+    display: none;
+}
+
+header {
+    text-align: center;
 }
 
 footer {
-    margin-top: 20px;
-    position: fixed;
-    bottom: 0;
+    margin-top: auto; /* Push the footer to the bottom */
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0px;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+.callendar {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-header, main, footer {
-    flex: 1;
-    padding: 1em;
+.yesterday, .today, .tomorrow {
+    background: #d6d1a8;
+    padding: 10px;
+    margin: 10px;
+    width: auto;
 }

@@ -1,5 +1,5 @@
 export enum Goal {
-    "schudnąć",
-    "utrzymać wagę",
-    "przytyć",
+    schudnac = "schudnąć",
+    utrzymac = "utrzymać wagę",
+    przytyc = "przytyć",
 }

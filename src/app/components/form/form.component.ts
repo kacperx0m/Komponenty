@@ -37,7 +37,7 @@ export class FormComponent implements OnInit{
   onSubmit() {
     this.isSubmitted = true;
     if (this.reactiveForm.valid){
-      this.user = {};
+      // this.user = {};
       Object.assign(this.user, this.reactiveForm.value);
 
       const weight = this.user.weight;
