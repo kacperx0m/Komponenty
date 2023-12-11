@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { User } from '../../user';
+import { User } from '../../data/models/user';
 import { Router } from '@angular/router';
-import { CalculateService } from 'src/app/services/calculate.service';
+import { CalculateService } from 'src/app/services/calculate/calculate.service';
 
 @Component({
   selector: 'app-form',

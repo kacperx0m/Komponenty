@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { User } from '../user';
-import { Goal } from '../goal.enum';
+import { User } from '../../data/models/user';
+import { Goal } from '../../data/enums/goal.enum';
 
 @Injectable({
   providedIn: 'root'

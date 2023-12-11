@@ -1,4 +1,4 @@
-import { nutritionType } from "./nutritionType.enum";
+import { nutritionType } from "../enums/nutritionType.enum";
 
 export interface Nutrition {
   type: nutritionType;

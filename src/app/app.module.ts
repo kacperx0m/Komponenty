@@ -8,9 +8,9 @@ import { FormComponent } from './components/form/form.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
-import { AuthService } from './services/auth.service';
-import { DirectiveDirective } from './directive.directive';
-import { CapitalizePipe } from './capitalize.pipe';
+import { AuthService } from './services/auth/auth.service';
+import { DirectiveDirective } from './data/directives/directive/directive.directive';
+import { CapitalizePipe } from './data/pipes/capitalize/capitalize.pipe';
 
 @NgModule({
   declarations: [
