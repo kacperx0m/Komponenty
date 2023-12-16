@@ -1,0 +1,54 @@
+<div class="showDate">
+  {{currentDate}}
+</div>
+
+<div class="wrapper">
+<div class="main">
+<div *ngFor="let meal of meals">
+    <h2 (click)="toggleShow(meal)">{{ meal.name  | capitalize}}</h2>
+    <p>Typ: {{ meal.type }}</p>
+  </div>
+
+  <div class="add" (click)="addNew()">+</div>
+
+<!-- end of main -->
+</div>
+
+<div class="details" *ngIf="showTrue">
+  <h3>Składniki:</h3>
+  <ul>
+    <li *ngFor="let ingredient of selectedMeal.ingredients">
+      {{ ingredient.name }}
+    </li>
+  </ul>
+  <h3>Wartości odżywcze:</h3>
+  <ul>
+    <li *ngFor="let nutritional of selectedMeal.nutritionals">
+      {{ nutritional.type }}: {{ nutritional.value }}
+    </li>
+  </ul>
+  <!-- end of details -->
+  </div>
+
+
+  <div class="addNew" *ngIf="new">
+    <h2>Nazwa posiłku:</h2>
+    <input type="text" placeholder="nazwa posilku">
+    <h3>Typ:</h3>
+    <input type="text" placeholder="typ posilku">
+    <h3>Składniki:</h3>
+    <div *ngFor="let ingredient of ingredients; let i = index; trackBy: trackByIndex">
+      <input type="text" [(ngModel)]="ingredients[i]" (keyup)="onIngredientChange(i)" placeholder="skladnik">
+    </div>
+    <h3>Wartości odżywcze:</h3>
+    <ul>
+      <li *ngFor="let nutrient of nutrients">
+        {{ nutrient }}:
+        <input type="text" placeholder="wartosc">
+      </li>
+    </ul>
+    <!-- end of addNew -->
+    </div>
+  
+<!-- end of wrapper -->
+</div>
