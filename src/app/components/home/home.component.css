@@ -72,7 +72,7 @@ img {
     height: 30px;
 }
 
-.edit, .logout {
+.edit, .logout, .save {
     font-weight: normal;
     cursor: pointer;
     text-decoration: underline;

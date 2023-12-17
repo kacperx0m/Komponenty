@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../data/models/user';
 import { CalculateService } from 'src/app/services/calculate/calculate.service';
 import { bmiCategory } from 'src/app/data/enums/bmiCategory.enum';
@@ -25,9 +25,19 @@ export class HomeComponent implements OnInit{
 
   constructor(private calculateService: CalculateService) {}
 
+  tempHeight: number;
+  tempWeight: number;
+  tempGoal: Goal;
+  tempActivity: string;
+
   ngOnInit(): void {
     this.user = this.calculateService.getUser();
     console.log(this.user);
+
+    this.tempHeight = this.user.height;
+    this.tempWeight = this.user.weight;
+    this.tempGoal = this.user.goal;
+    this.tempActivity = this.user.activityLevel;
 
     // do testow
     this.userBMI = this.calculateService.calculateBMI(this.user.weight, this.user.height);//this.calculateService.bmi;
@@ -60,7 +70,27 @@ export class HomeComponent implements OnInit{
     return new Date(date.getTime() + 24 * 60 * 60 * 1000);
   }
 
-  edit(){
+  edit() {
     this.editing = true;
+  }
+
+
+  // @ViewChild('goalSelect') goalSelect: any;
+  // @ViewChild('heightInput') heightInput: any;
+  // @ViewChild('weightInput') weightInput: any;
+  // @ViewChild('activitySelect') activitySelect: any;
+
+  save() {
+    this.editing = false;
+    this.user.goal = this.tempGoal;
+    this.user.height = this.tempHeight;
+    this.user.weight = this.tempWeight;
+    this.user.activityLevel = this.tempActivity;
+    this.userBMI = this.calculateService.calculateBMI(this.user.weight, this.user.height);
+    this.userBMR = this.calculateService.calculateBMR(this.user.gender, this.user.weight, this.user.height, this.user.age);
+    this.userTDEE = this.calculateService.calculateTDEE(this.user.activityLevel, this.user.gender, this.user.weight, this.user.height, this.user.age);
+    this.jakasKategoriaCzyCos = this.calculateService.categorizeWeight(this.userBMI);
+    this.goalCalories = this.calculateService.calculateGoal(this.user.goal);
+    this.userCalories = this.calculateService.calculatePercentage(1234, this.goalCalories);
   }
 }

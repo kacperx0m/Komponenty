@@ -106,7 +106,8 @@ export class CalculateService {
       return this.goalCalories = 500; 
     } else if (goal == Goal.schudnac) {
       return this.goalCalories = -500;
+    } else {
+      return this.goalCalories=0;
     }
-    return this.goalCalories;
   }
 }
