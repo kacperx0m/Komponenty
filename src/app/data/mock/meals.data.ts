@@ -17,6 +17,24 @@ export const MEALS:Meal[] = [
     name: "kanapka z maslem i jajkami",
     type: MealType.Breakfast,
     nutritionals: calculateTotalNutrition([INGREDIENTS[0],INGREDIENTS[1],INGREDIENTS[2]])
+  }, 
+  {
+    ingredients: [INGREDIENTS[4],INGREDIENTS[5],INGREDIENTS[6]],
+    name: "schabowy z ziemniakami i surowka",
+    type: MealType.Dinner,
+    nutritionals: calculateTotalNutrition([INGREDIENTS[4],INGREDIENTS[5],INGREDIENTS[6]])
+  }, 
+  {
+    ingredients: [INGREDIENTS[7],INGREDIENTS[8],INGREDIENTS[9]],
+    name: "salatka z tunczykiem",
+    type: MealType.Lunch,
+    nutritionals: calculateTotalNutrition([INGREDIENTS[7],INGREDIENTS[8],INGREDIENTS[9]])
+  },
+  {
+    ingredients: [INGREDIENTS[3]],
+    name: "budyn",
+    type: MealType.Snack,
+    nutritionals: calculateTotalNutrition([INGREDIENTS[3]])
   }
 ];
 

@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth/auth.service';
 import { DirectiveDirective } from './data/directives/directive/directive.directive';
 import { CapitalizePipe } from './data/pipes/capitalize/capitalize.pipe';
+import { DayViewComponent } from './components/day-view/day-view.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,14 @@ import { CapitalizePipe } from './data/pipes/capitalize/capitalize.pipe';
     HomeComponent,
     LoginComponent,
     DirectiveDirective,
-    CapitalizePipe
+    CapitalizePipe,
+    DayViewComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    FormsModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

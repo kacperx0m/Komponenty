@@ -1,17 +1,7 @@
 <!-- meal.component.html -->
 <div *ngFor="let meal of meals">
+  <input type="checkbox">
   <h2>{{ meal.name  | capitalize}}</h2>
-  <p>Typ: {{ meal.type }}</p>
-  <h3>Składniki:</h3>
-  <ul>
-    <li *ngFor="let ingredient of meal.ingredients">
-      {{ ingredient.name }}
-    </li>
-  </ul>
-  <h3>Wartości odżywcze:</h3>
-  <ul>
-    <li *ngFor="let nutritional of meal.nutritionals">
-      {{ nutritional.type }}: {{ nutritional.value }}
-    </li>
-  </ul>
+  <br>
+  <!-- <p>Typ: {{ meal.type }}</p> -->
 </div>
