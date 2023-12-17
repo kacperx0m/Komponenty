@@ -10,7 +10,7 @@
   </ul>
   <h3>Wartości odżywcze:</h3>
   <ul>
-    <li *ngFor="let nutritional of meal.nutritionals">
+    <li *ngFor="let nutritional of sortNutritionals(meal.nutritionals)">
       {{ nutritional.type }}: {{ nutritional.value }}
     </li>
   </ul>

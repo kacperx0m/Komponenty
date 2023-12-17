@@ -17,6 +17,12 @@ export const MEALS:Meal[] = [
     name: "kanapka z maslem i jajkami",
     type: MealType.Breakfast,
     nutritionals: calculateTotalNutrition([INGREDIENTS[0],INGREDIENTS[1],INGREDIENTS[2]])
+  },
+  {
+    ingredients: [INGREDIENTS[3],INGREDIENTS[4],INGREDIENTS[5]],
+    name: "kotlet schabowy z ziemniakami i mizeria ",
+    type: MealType.Dinner,
+    nutritionals: calculateTotalNutrition([INGREDIENTS[3],INGREDIENTS[4],INGREDIENTS[5]])
   }
 ];
 

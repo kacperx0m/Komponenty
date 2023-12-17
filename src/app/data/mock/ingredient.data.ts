@@ -25,5 +25,36 @@ export const INGREDIENTS:Ingredient[] = [
       { type: nutritionType.fats, value: 81 },
       { type: nutritionType.proteins, value: 1 }
     ]
+  },
+
+  {
+    name: "ziemniaki",
+    nutritionals: [
+      {type:nutritionType.calorific_value,value:300},
+      { type: nutritionType.carbohydrates, value: 60},
+      { type: nutritionType.proteins, value: 10 }
+    ]
+  },
+
+  {
+    name: "mizeria",
+    nutritionals: [
+
+      { type: nutritionType.fats, value: 10 },
+      { type: nutritionType.carbohydrates, value: 30 },
+      { type: nutritionType.salt,value:1}
+
+    ]
+  },
+
+  {
+    name: "Kotlet schabowy",
+    nutritionals: [
+      {type:nutritionType.calorific_value,value:400},
+      { type: nutritionType.fats, value: 20 },
+      { type: nutritionType.proteins, value: 40 }
+    ]
   }
+
+
 ]
