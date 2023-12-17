@@ -40,8 +40,6 @@ export class FormComponent implements OnInit{
       //Object.assign(this.user, this.reactiveForm.value);
 
       this.user = new User(
-        this.reactiveForm.get('username').value,
-        this.reactiveForm.get('password').value,
         this.reactiveForm.get('name').value,
         this.reactiveForm.get('weight').value,
         this.reactiveForm.get('height').value,
@@ -50,6 +48,9 @@ export class FormComponent implements OnInit{
         this.reactiveForm.get('gender').value,
         this.reactiveForm.get('activityLevel').value
       );
+
+      this.user.Username = this.reactiveForm.get('username').value;
+      this.user.Password = this.reactiveForm.get('password').value;
 
       this.calculateService.calculateBMI(this.user.weight, this.user.height);
       this.calculateService.calculateBMR(this.user.gender, this.user.age, this.user.weight, this.user.height);

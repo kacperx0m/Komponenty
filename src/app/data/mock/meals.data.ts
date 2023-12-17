@@ -33,7 +33,7 @@ export const MEALS:Meal[] = [
   {
     ingredients: [INGREDIENTS[3]],
     name: "budyn",
-    type: MealType.Snack,
+    type: MealType.Supper,
     nutritionals: calculateTotalNutrition([INGREDIENTS[3]])
   },
   {
