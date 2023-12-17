@@ -37,17 +37,23 @@ export class FormComponent implements OnInit{
   onSubmit() {
     this.isSubmitted = true;
     if (this.reactiveForm.valid){
-      // this.user = {};
-      Object.assign(this.user, this.reactiveForm.value);
+      //Object.assign(this.user, this.reactiveForm.value);
 
-      const weight = this.user.weight;
-      const height = this.user.height;
-      const age = this.user.age;
-      const gender = this.user.gender;
-      const activityLevel = this.user.activityLevel;
-      this.calculateService.calculateBMI(weight, height);
-      this.calculateService.calculateBMR(gender, age, weight, height);
-      this.calculateService.calculateTDEE(activityLevel, gender, weight, height, age);
+      this.user = new User(
+        this.reactiveForm.get('username').value,
+        this.reactiveForm.get('password').value,
+        this.reactiveForm.get('name').value,
+        this.reactiveForm.get('weight').value,
+        this.reactiveForm.get('height').value,
+        this.reactiveForm.get('age').value,
+        this.reactiveForm.get('goal').value,
+        this.reactiveForm.get('gender').value,
+        this.reactiveForm.get('activityLevel').value
+      );
+
+      this.calculateService.calculateBMI(this.user.weight, this.user.height);
+      this.calculateService.calculateBMR(this.user.gender, this.user.age, this.user.weight, this.user.height);
+      this.calculateService.calculateTDEE(this.user.activityLevel, this.user.gender, this.user.weight, this.user.height, this.user.age);
 
       this.calculateService.setUser(this.user);
 
@@ -56,5 +62,11 @@ export class FormComponent implements OnInit{
       console.log("formularz jest bledny");
     }
     
+  }
+
+  getValues() {
+    for (const field in this.reactiveForm.controls) {
+      const control = this.reactiveForm.get(field);
+    }
   }
 }

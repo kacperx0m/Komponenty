@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+}
+
+.main {
+    border: solid 3px black;
+    width: 60%;
+    margin: auto;
+}
+
+.add {
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    /* padding: 10px; */
+    background: #fff;
+    border: 3px solid black;
+    color: #000;
+    text-align: center;
+    font: 32px Arial, sans-serif;
+    box-sizing: content-box;
+    margin-left: auto;
+}
+
+.showDate {
+    text-align: center;
+    padding: 50px;
+}
