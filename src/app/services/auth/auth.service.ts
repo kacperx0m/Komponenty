@@ -7,22 +7,24 @@ import {
   Router,
 } from '@angular/router';
 import { HttpClient } from '@angular/common/http'
+import { User } from 'src/app/data/models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   isLoggedIn = false;
+  user: User;
   
   constructor(private http: HttpClient) { }
 
   isAuthenticated() {
     return this.isLoggedIn;
- }
+  }
 
- loginCheck(params: any) {
-  return this.http.post("http://localhost:5000/auth/login", params)
- }
+  login(params: any) {
+    return this.http.post("http://localhost:5000/auth/login", params);
+  }
 }
 
 export const LoginGuard: CanActivateFn = (

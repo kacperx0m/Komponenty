@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { User } from 'src/app/data/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -33,10 +34,13 @@ export class LoginComponent {
         username: this.reactiveForm.get('username').value,
         password: this.reactiveForm.get('password').value
       }
-      this.authService.loginCheck(this.params).subscribe((response) => {
+      this.authService.login(this.params).subscribe((response) => {
         if (response['id'] != null) {
           this.authService.isLoggedIn=true;
+          this.authService.user = new User(response['name'], response['weight'], response['height'], response['age'], response['goal'], response['gender'], response['activity_level'])
           this.router.navigate(['/home']);
+        } else {
+          alert('Zły login lub hasło');
         }
       })
     } else {
