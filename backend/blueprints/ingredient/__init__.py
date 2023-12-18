@@ -15,22 +15,7 @@ def getAllIngredients():
     con.close()
     table = []
     for line in data:
-        elem = {'name': line[0]}
-        table.append(elem)
-    return json.dumps(table)
-
-@ingredientBlueprint.route('/nutritions/<string:ingredientName>', methods=['GET'])
-def getIngredientNutritions(ingredientName):
-    con = sqlite3.connect(dbPath)
-    cur = con.cursor()
-    sqlreq = f"SELECT nutrition, quantity FROM NutritionsForIngredient WHERE ingredient='{ingredientName}'"
-    res = cur.execute(sqlreq)
-    data = res.fetchall()
-    con.close()
-    table = []
-    for line in data:
-        elem = {'name': line[0],
-                'value': line[1]}
+        elem = json.loads(getIngredientNutritions(line[0]))
         table.append(elem)
     return json.dumps(table)
 
@@ -93,4 +78,22 @@ def deleteIngredient(ingredientName):
     cur.execute(sqlreq)
     con.commit()
     return {'message': 'Ok'}
+
+@ingredientBlueprint.route('/<string:ingredientName>', methods=['GET'])
+def getIngredientNutritions(ingredientName):
+    con = sqlite3.connect(dbPath)
+    cur = con.cursor()
+    sqlreq = f"SELECT nutrition, quantity FROM NutritionsForIngredient WHERE ingredient='{ingredientName}'"
+    res = cur.execute(sqlreq)
+    data = res.fetchall()
+    con.close()
+    table = []
+    for line in data:
+        elem = {'name': line[0],
+                'value': line[1]}
+        table.append(elem)
+    ret = {'name': ingredientName,
+           'nutritions': table}
+    return json.dumps(ret)
+
 
