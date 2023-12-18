@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit{
     this.tempWeight = this.user.weight;
     this.tempGoal = this.user.goal;
     this.tempActivity = this.user.activityLevel;
-    this.getIngredient('Budyn');
+  //  this.getIngredient('Budyn');
     this.getIngredients();
 
     // do testow
@@ -59,16 +59,16 @@ export class HomeComponent implements OnInit{
    this.userCaloriesPercentage = this.calculateService.updateCalorie(0);
   }
 
-  getIngredient(ingredientName: string) {
-    this.ingredientService.getIngredientDetails(ingredientName).subscribe(
-      data => {
-        this.ingredient = data;
-      },
-      error => {
-        console.error('There was an error retrieving the ingredient!', error);
-      }
-    );
-  }
+  // getIngredient(ingredientName: string) {
+  //   this.ingredientService.getIngredientDetails(ingredientName).subscribe(
+  //     data => {
+  //       this.ingredient = data;
+  //     },
+  //     error => {
+  //       console.error('There was an error retrieving the ingredient!', error);
+  //     }
+  //   );
+  // }
 
   getIngredients(): void {
     this.ingredientService.getIngredients().subscribe(
