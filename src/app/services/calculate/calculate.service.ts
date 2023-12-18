@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../data/models/user';
 import { Goal } from '../../data/enums/goal.enum';
+import { bmiCategory } from 'src/app/data/enums/bmiCategory.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -8,23 +9,22 @@ import { Goal } from '../../data/enums/goal.enum';
 export class CalculateService {
 
   user: User = new User(
-    
-      'exampleUser',
-      'examplePassword',
       'John Doe',
       70,
       175,
       25,
-      Goal.utrzymac,
+      Goal.przytyc,
       'm',
-      'niski',
+      'lekki',
   );
   
 
   bmi: number;
   bmr: number;
   tdee: number;
+  weightCategory: bmiCategory;
   calories: number;
+  goalCalories: number = 0;
 
   constructor() {
 
@@ -44,6 +44,7 @@ export class CalculateService {
     height/=100;
     this.bmi = weight/(height*height);
     console.log(weight);
+    this.weightCategory = this.categorizeWeight(this.bmi);
     return this.bmi;
   }
 
@@ -67,12 +68,46 @@ export class CalculateService {
     if (activity == 'niski') {
       scale = 1.2;
     }
+    if (activity == 'lekki') {
+      scale = 1.375;
+    }
+    if (activity == 'umiarkowany') {
+      scale = 1.55;
+    }
+    if (activity == 'wysoki') {
+      scale = 1.725;
+    }
+    if (activity == 'ultra') {
+      scale = 1.9;
+    }
     this.tdee = this.bmr * scale;
     return this.tdee;
   }
 
-  calculatePercentage(calories: number): number {
-    this.calories = calories/this.tdee * 100;
+  calculatePercentage(calories: number, goalCalories: number): number {
+    this.calories = calories/(this.tdee+goalCalories) * 100;
     return this.calories;
+  }
+
+  categorizeWeight(bmi: number): bmiCategory {
+    if (bmi < 18.5) {
+        return bmiCategory.underweight;
+    } else if (bmi >= 18.5 && bmi <= 24.9) {
+        return bmiCategory.healthy;
+    } else if (bmi >= 25.0 && bmi <= 29.9) {
+        return bmiCategory.overweight;
+    } else {
+        return bmiCategory.obese;
+    }
+  }
+
+  calculateGoal(goal: Goal): number {
+    if (goal == Goal.przytyc) {
+      return this.goalCalories = 500; 
+    } else if (goal == Goal.schudnac) {
+      return this.goalCalories = -500;
+    } else {
+      return this.goalCalories=0;
+    }
   }
 }

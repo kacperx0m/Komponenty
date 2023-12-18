@@ -73,3 +73,24 @@ progress {
   width: 100%;
   height: 20px;
 }
+
+
+span {
+    font-weight:bold;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+}
+
+.edit, .logout, .save {
+    font-weight: normal;
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+}
+
+.normal {
+    font-weight: normal;
+}
