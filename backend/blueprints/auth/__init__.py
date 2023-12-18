@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 import json
 import sqlite3
-from resources.models.user import User
+from resources.variables import dbPath
 
 authBlueprint = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -9,7 +9,7 @@ authBlueprint = Blueprint('auth', __name__, url_prefix='/auth')
 def login():
     username = request.json['username']
     password = request.json['password']
-    con = sqlite3.connect('projectdb.db')
+    con = sqlite3.connect(dbPath)
     cursor = con.cursor()
     sqlreq = f"SELECT * FROM User WHERE username='{username}' AND password='{password}'"
     res = cursor.execute(sqlreq)
