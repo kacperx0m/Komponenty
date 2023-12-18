@@ -19,7 +19,22 @@ userModel = authNamespace.model('User data', {
     'weight': fields.Float(),
     'height': fields.Float(),
     'age': fields.Integer(),
-    'goal': fields.String()
+    'goal': fields.String(),
+    'gender': fields.String(),
+    'activity_level': fields.Integer()
+})
+
+userModelWithId = authNamespace.model('User data', {
+    'id': fields.Integer(),
+    'username': fields.String(),
+    'password': fields.String(),
+    'name': fields.String(),
+    'weight': fields.Float(),
+    'height': fields.Float(),
+    'age': fields.Integer(),
+    'goal': fields.String(),
+    'gender': fields.String(),
+    'activity_level': fields.Integer()
 })
 
 messageModel = authNamespace.model('Response message', {
@@ -40,4 +55,12 @@ class Register(Resource):
     @authNamespace.expect(userModel)
     def post(self):
         ret = requests.post(apiUrl + '/auth/register', json=authNamespace.payload)
+        return ret.json()
+    
+@authNamespace.route('/user')
+class UpdateUser(Resource):
+    @authNamespace.expect(userModelWithId)
+    @authNamespace.marshal_with(messageModel)
+    def patch(self):
+        ret = requests.patch(apiUrl + '/auth/user', json=authNamespace.payload)
         return ret.json()
