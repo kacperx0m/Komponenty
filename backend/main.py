@@ -1,5 +1,4 @@
 from flask import Flask
-from blueprints.basic_endpoints import blueprint as basic_endpoints
 from blueprints.documented_endpoints import blueprint as documented_endpoints
 from blueprints.auth import authBlueprint
 from blueprints.ingredient import ingredientBlueprint
@@ -9,7 +8,6 @@ from blueprints.history import historyBlueprint
 
 app = Flask(__name__)
 
-app.register_blueprint(basic_endpoints)
 app.register_blueprint(documented_endpoints)
 app.register_blueprint(authBlueprint)
 app.register_blueprint(ingredientBlueprint)
