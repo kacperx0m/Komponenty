@@ -5,6 +5,8 @@ import { bmiCategory } from 'src/app/data/enums/bmiCategory.enum';
 import { Goal } from 'src/app/data/enums/goal.enum';
 import { Meal } from 'src/app/data/models/meal';
 import { nutritionType } from 'src/app/data/enums/nutritionType.enum';
+import { IngredientService } from 'src/app/services/ingredient.service';
+import { Ingredient } from 'src/app/data/models/ingredient';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +14,7 @@ import { nutritionType } from 'src/app/data/enums/nutritionType.enum';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
+  ingredient: Ingredient;
   user: User;
   jakasKategoriaCzyCos: bmiCategory;
   userBMI: number;
@@ -28,12 +31,13 @@ export class HomeComponent implements OnInit{
 
   isRightPanelOpen: boolean = true;
 
-  constructor(private calculateService: CalculateService) {}
+  constructor(private calculateService: CalculateService, private ingredientService: IngredientService) {}
 
   tempHeight: number;
   tempWeight: number;
   tempGoal: Goal;
   tempActivity: string;
+  ingredients: Ingredient[] = [];
 
   ngOnInit(): void {
     this.user = this.calculateService.getUser();
@@ -43,6 +47,8 @@ export class HomeComponent implements OnInit{
     this.tempWeight = this.user.weight;
     this.tempGoal = this.user.goal;
     this.tempActivity = this.user.activityLevel;
+    this.getIngredient('Budyn');
+    this.getIngredients();
 
     // do testow
     this.userBMI = this.calculateService.calculateBMI(this.user.weight, this.user.height);//this.calculateService.bmi;
@@ -52,6 +58,32 @@ export class HomeComponent implements OnInit{
     this.goalCalories = this.calculateService.calculateGoal(this.user.goal);
    this.userCaloriesPercentage = this.calculateService.updateCalorie(0);
   }
+
+  getIngredient(ingredientName: string) {
+    this.ingredientService.getIngredientDetails(ingredientName).subscribe(
+      data => {
+        this.ingredient = data;
+      },
+      error => {
+        console.error('There was an error retrieving the ingredient!', error);
+      }
+    );
+  }
+
+  getIngredients(): void {
+    this.ingredientService.getIngredients().subscribe(
+      (data: Ingredient[]) => {
+        this.ingredients = data;
+        this.ingredients.forEach((ingredient) => {
+          console.log('Ingredient taken:', ingredient.name);
+        });
+      },
+      error => {
+        console.error('Error fetching ingredients', error);
+      }
+    );
+  }
+
 
   togglePanel() {
     this.isRightPanelOpen = !this.isRightPanelOpen;

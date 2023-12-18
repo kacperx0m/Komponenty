@@ -12,6 +12,7 @@ import { AuthService } from './services/auth/auth.service';
 import { DirectiveDirective } from './data/directives/directive/directive.directive';
 import { CapitalizePipe } from './data/pipes/capitalize/capitalize.pipe';
 import { DayViewComponent } from './components/day-view/day-view.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DayViewComponent } from './components/day-view/day-view.component';
     ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

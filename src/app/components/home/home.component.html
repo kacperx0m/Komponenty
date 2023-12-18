@@ -105,6 +105,15 @@
 
 </div>
 
+<div *ngIf="ingredient">
+  <h2>{{ ingredient.name }}</h2>
+  <ul>
+    <li *ngFor="let nutritional of ingredient.nutritionals">
+      {{ nutritional.type }}: {{ nutritional.value }}
+    </li>
+  </ul>
+</div>
+
 
 <!--
     jest jeszcze formula na idealna wage, mozna dodac

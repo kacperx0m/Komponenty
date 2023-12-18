@@ -5,9 +5,9 @@ from blueprints.ingredient import ingredientBlueprint
 from blueprints.nutrition import nutritionBlueprint
 from blueprints.meal import mealBlueprint
 from blueprints.history import historyBlueprint
-
+from flask_cors import CORS
 app = Flask(__name__)
-
+CORS(app)
 app.register_blueprint(documented_endpoints)
 app.register_blueprint(authBlueprint)
 app.register_blueprint(ingredientBlueprint)
