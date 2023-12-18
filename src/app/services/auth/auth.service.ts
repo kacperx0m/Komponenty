@@ -6,6 +6,7 @@ import {
   UrlTree,
   Router,
 } from '@angular/router';
+import { HttpClient } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,14 @@ import {
 export class AuthService {
   isLoggedIn = false;
   
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   isAuthenticated() {
     return this.isLoggedIn;
+ }
+
+ loginCheck(params: any) {
+  return this.http.post("http://localhost:5000/auth/login", params)
  }
 }
 
