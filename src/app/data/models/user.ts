@@ -11,9 +11,9 @@ export class User {
     gender?: string;
     activityLevel?: string;
 
-    constructor(username: string, password: string, name: string, weight: number, height: number, age: number, goal: Goal, gender: string, activityLevel: string) {
-        this.username = username;
-        this.password = password;
+    constructor(name: string, weight: number, height: number, age: number, goal: Goal, gender: string, activityLevel: string) {
+        // this.username = username;
+        // this.password = password;
         this.name = name;
         this.weight = weight;
         this.height = height;
@@ -23,19 +23,19 @@ export class User {
         this.activityLevel = activityLevel;
     }
 
-    setUsername(username: string): void {
+    set Username(username: string) {
         this.username = username;
     }
 
-    setPassword(password: string): void {
+    set Password(password: string) {
         this.password = password;
     }
 
-    getUsername(): string {
+    get Username(): string {
         return this.username;
     }
 
-    getPassword(): string {
+    get Password(): string {
         return this.password;
     }
 }
