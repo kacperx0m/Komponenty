@@ -3,6 +3,8 @@ import { User } from '../../data/models/user';
 import { CalculateService } from 'src/app/services/calculate/calculate.service';
 import { bmiCategory } from 'src/app/data/enums/bmiCategory.enum';
 import { Goal } from 'src/app/data/enums/goal.enum';
+import { Meal } from 'src/app/data/models/meal';
+import { nutritionType } from 'src/app/data/enums/nutritionType.enum';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +17,14 @@ export class HomeComponent implements OnInit{
   userBMI: number;
   userBMR: number;
   userTDEE: number;
-  userCalories: number;
+  userCalories: number = 0;
+  userCaloriesPercentage:number;
   today: Date = new Date();
   goalCalories: number;
   editing: boolean = false;
   goals = Object.values(Goal);
+  selectedMeals: Meal[] = [];
+  totalMealCalories: number = 0;
 
   isRightPanelOpen: boolean = true;
 
@@ -45,7 +50,7 @@ export class HomeComponent implements OnInit{
     this.userTDEE = this.calculateService.calculateTDEE(this.user.activityLevel, this.user.gender, this.user.weight, this.user.height, this.user.age);//.tdee;
     this.jakasKategoriaCzyCos = this.calculateService.categorizeWeight(this.userBMI);
     this.goalCalories = this.calculateService.calculateGoal(this.user.goal);
-    this.userCalories = this.calculateService.calculatePercentage(1234, this.goalCalories);
+   this.userCaloriesPercentage = this.calculateService.updateCalorie(0);
   }
 
   togglePanel() {
@@ -72,6 +77,34 @@ export class HomeComponent implements OnInit{
 
   edit() {
     this.editing = true;
+  }
+
+  onMealSelected(event: { meal: Meal, isChecked: boolean }) {
+    if (event.isChecked) {
+      this.selectedMeals.push(event.meal);
+    } else {
+      this.selectedMeals = this.selectedMeals.filter(meal => meal !== event.meal);
+    }
+    this.totalMealCalories = this.calculateTotalMealCalories();
+    this.updateUserCalories();
+  }
+
+  private calculateTotalMealCalories(): number {
+    return this.selectedMeals.reduce((totalCalories, meal) => {
+      const mealCalories = meal.ingredients.reduce((mealTotal, ingredient) => {
+        const calorificValueNutrition = ingredient.nutritionals.find(nutrition => nutrition.type === nutritionType.calorific_value);
+        return mealTotal + (calorificValueNutrition ? calorificValueNutrition.value : 0);
+      }, 0);
+      return totalCalories + mealCalories;
+    }, 0);
+  }
+
+
+  private updateUserCalories() {
+    this.userCalories = this.calculateService.updateCalorie(this.totalMealCalories);
+   // this.userCaloriesPercentage = this.userCalories / 100;
+    this.userCaloriesPercentage = this.calculateService.calculatePercentage(this.totalMealCalories, this.goalCalories);
+
   }
 
 

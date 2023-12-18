@@ -17,13 +17,13 @@ export class CalculateService {
       'm',
       'lekki',
   );
-  
+
 
   bmi: number;
   bmr: number;
   tdee: number;
   weightCategory: bmiCategory;
-  calories: number;
+  calories: number = 0;
   goalCalories: number = 0;
 
   constructor() {
@@ -57,7 +57,7 @@ export class CalculateService {
       this.bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
       return this.bmr;
     }
-    
+
   }
 
   // total daily energy expenditure - calories burnt a day, more precise
@@ -88,6 +88,10 @@ export class CalculateService {
     this.calories = calories/(this.tdee+goalCalories) * 100;
     return this.calories;
   }
+  updateCalorie(calories:number): number{
+    this.calories = calories;
+    return this.calories;
+  }
 
   categorizeWeight(bmi: number): bmiCategory {
     if (bmi < 18.5) {
@@ -103,7 +107,7 @@ export class CalculateService {
 
   calculateGoal(goal: Goal): number {
     if (goal == Goal.przytyc) {
-      return this.goalCalories = 500; 
+      return this.goalCalories = 500;
     } else if (goal == Goal.schudnac) {
       return this.goalCalories = -500;
     } else {

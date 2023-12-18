@@ -14,6 +14,7 @@ export const INGREDIENTS:Ingredient[] = [
   {
     name: "Chleb",
     nutritionals: [
+      {type:nutritionType.calorific_value,value:200},
       {type: nutritionType.carbohydrates,value:50},
       {type: nutritionType.proteins,value : 9}
     ]
@@ -22,6 +23,7 @@ export const INGREDIENTS:Ingredient[] = [
   {
     name: "Maslo",
     nutritionals: [
+      {type:nutritionType.calorific_value,value:200},
       { type: nutritionType.fats, value: 81 },
       { type: nutritionType.proteins, value: 1 }
     ]
@@ -30,7 +32,7 @@ export const INGREDIENTS:Ingredient[] = [
   {
     name: "Budyn",
     nutritionals: [
-      { type: nutritionType.fats, value: 20 },
+      { type: nutritionType.calorific_value, value: 400 },
       { type: nutritionType.proteins, value: 10 },
       { type: nutritionType.sugars, value:10 }
     ]
@@ -39,7 +41,7 @@ export const INGREDIENTS:Ingredient[] = [
   {
     name: "Kotlet Schabowy",
     nutritionals: [
-      { type: nutritionType.fats, value: 30 },
+      { type: nutritionType.calorific_value, value: 400 },
       { type: nutritionType.proteins, value: 20 },
       { type: nutritionType.salt, value:2 }
     ]
@@ -48,7 +50,7 @@ export const INGREDIENTS:Ingredient[] = [
   {
     name: "Ziemniaki",
     nutritionals: [
-      { type: nutritionType.carbohydrates, value: 30 },
+      { type: nutritionType.calorific_value, value: 200 },
       { type: nutritionType.proteins, value: 3 },
       { type: nutritionType.salt, value:1 }
     ]
@@ -66,6 +68,7 @@ export const INGREDIENTS:Ingredient[] = [
   {
     name: "Tunczyk",
     nutritionals: [
+      { type: nutritionType.calorific_value, value: 50 },
       { type: nutritionType.fats, value: 20 },
       { type: nutritionType.proteins, value: 20 },
       { type: nutritionType.salt, value:2 }
@@ -75,6 +78,7 @@ export const INGREDIENTS:Ingredient[] = [
   {
     name: "Sos",
     nutritionals: [
+      { type: nutritionType.calorific_value, value: 30 },
       { type: nutritionType.carbohydrates, value: 5 },
       { type: nutritionType.sugars, value: 5 },
     ]
@@ -83,6 +87,7 @@ export const INGREDIENTS:Ingredient[] = [
   {
     name: "Salatka",
     nutritionals: [
+      { type: nutritionType.calorific_value, value: 80 },
       { type: nutritionType.proteins, value: 20 },
       { type: nutritionType.calorific_value, value:40 }
     ]
@@ -100,7 +105,7 @@ export const INGREDIENTS:Ingredient[] = [
   {
     name: "mizeria",
     nutritionals: [
-
+      { type: nutritionType.calorific_value, value: 45 },
       { type: nutritionType.fats, value: 10 },
       { type: nutritionType.carbohydrates, value: 30 },
       { type: nutritionType.salt,value:1}

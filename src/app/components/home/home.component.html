@@ -19,8 +19,8 @@
         <span>waga:</span><input type="text" #weightInput [(ngModel)]="tempWeight">
         </p>
     </div>
-    
-    
+
+
 
 
 
@@ -56,21 +56,26 @@
 
     <div class="today">
         <p>{{ daytoday }}</p>
-        <p appDirective>szczegóły</p>
+        <a routerLink="../day-view">szczegóły</a>
     </div>
 
     <div  class="tomorrow">
         <p>{{ tomorrow }}</p>
-        <p appDirective>szczegóły</p>
+        <a routerLink="../day-view">szczegóły</a>
     </div>
 </div>
 
 
 
 <div class="bottomPanel">
-    <p>Spożyłeś dzisiaj już <span id="caloriesIntake">1234</span> kalorii</p>
-    <p>co stanowi <span>{{userCalories | number:'1.0-0'}}/100</span>%</p>
+    <p>Spożyłeś dzisiaj już {{userCalories | number:'1.0-0'}} kalorii</p>
+    <p>co stanowi <span>{{userCaloriesPercentage | number:'1.0-0'}}/100</span>%</p>
 </div>
+<div class="progress-bar-container">
+    <progress value="{{ userCaloriesPercentage }}" max=100></progress>
+    <span>{{ userCalories }} / {{userTDEE + goalCalories  | number:'1.0-0'}} calories</span>
+</div>
+
 
 <div class="progress-bar-container">
   <progress value="{{ userCalories }}" max="{{ userTDEE }}"></progress>
@@ -97,7 +102,8 @@
     <a routerLink="../login" class="logout">[wyloguj]</a>
     <br>
     Dzisiejsze posiłki:
-    <app-meal></app-meal>
+    <app-meal (mealSelect)="onMealSelected($event)"></app-meal>
+
 </div>
 
 

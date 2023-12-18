@@ -33,7 +33,7 @@ export class DayViewComponent {
   }
 
   addNew() {
-    this.new = true;
+    this.new = !this.new;
     console.log(this.nutrients);
   }
 
