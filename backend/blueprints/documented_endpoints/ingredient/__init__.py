@@ -10,6 +10,10 @@ ingredientModel = ingredientNamepsace.model('Ingredient object with nutritions',
     'nutritions': fields.List(fields.Nested(nutritionWithValueModel))
 })
 
+ingredientNameModel = ingredientNamepsace.model('Ingredient object', {
+    'name': fields.String()
+})
+
 messageModel = ingredientNamepsace.model('Returned message', {
     'message': fields.String()
 })
@@ -19,7 +23,6 @@ class Ingredient(Resource):
     @ingredientNamepsace.marshal_list_with(ingredientModel)
     def get(self):
         ret = requests.get(apiUrl + '/ingredient')
-        print(ret.json())
         return ret.json()
     
     @ingredientNamepsace.expect(ingredientModel)

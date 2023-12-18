@@ -14,7 +14,6 @@ def getNutritions():
     data = res.fetchall()
     con.close()
     table = []
-    print(data)
     for line in data:
         elem = {'name': line[0]}
         table.append(elem)

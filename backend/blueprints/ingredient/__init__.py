@@ -55,7 +55,7 @@ def updateIngredient():
     data = res.fetchone()
     if data is None:
         return {'message': 'Ingredient doesn\'t exist'}
-    if nutrtions is not None:
+    if nutrtions is not []:
         data = []
         for line in nutrtions:
             elem = (line['value'], name, line['name'])
@@ -77,6 +77,10 @@ def deleteIngredient(ingredientName):
     sqlreq = f"DELETE FROM NutritionsForIngredient WHERE ingredient='{ingredientName}'"
     cur.execute(sqlreq)
     con.commit()
+    sqlreq = f"DELETE FROM IngredientsInMeal WHERE ingredient='{ingredientName}'"
+    cur.execute(sqlreq)
+    con.commit()
+    con.close()
     return {'message': 'Ok'}
 
 @ingredientBlueprint.route('/<string:ingredientName>', methods=['GET'])
