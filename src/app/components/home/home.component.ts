@@ -124,6 +124,8 @@ export class HomeComponent implements OnInit{
     this.userTDEE = this.calculateService.calculateTDEE(this.user.activityLevel, this.user.gender, this.user.weight, this.user.height, this.user.age);
     this.jakasKategoriaCzyCos = this.calculateService.categorizeWeight(this.userBMI);
     this.goalCalories = this.calculateService.calculateGoal(this.user.goal);
-    this.userCalories = this.calculateService.calculatePercentage(1234, this.goalCalories);
+    //this.userCalories = this.calculateService.calculatePercentage(1234, this.goalCalories);
+    //this.userCalories = this.calculateService.updateCalories();
+    this.updateUserCalories();
   }
 }
