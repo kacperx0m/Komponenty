@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Meal } from 'src/app/data/models/meal';
 import {MEALS} from 'src/app/data/mock/meals.data'
 import { Nutrition } from 'src/app/data/models/nutrition';
@@ -18,4 +18,10 @@ export class MealComponent{
     const order = ['calorific_value', 'fats', 'carbohydrates', 'sugars', 'proteins', 'salt'];
     return nutritionals.sort((a, b) => order.indexOf(a.type) - order.indexOf(b.type));
   }
+
+  @Output() mealSelect = new EventEmitter<{ meal: Meal, isChecked: boolean }>();
+
+  onMealSelectChange(meal: Meal, event: any) {
+    this.mealSelect.emit({ meal, isChecked: event.target.checked });
+}
 }

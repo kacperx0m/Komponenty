@@ -1,6 +1,6 @@
 <!-- meal.component.html -->
 <div *ngFor="let meal of meals">
-  <input type="checkbox">
+  <input type="checkbox" (change)="onMealSelectChange(meal, $event)">
   <h2>{{ meal.name  | capitalize}}</h2>
   <p>Typ: {{ meal.type }}</p>
   <h3>Składniki:</h3>

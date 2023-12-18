@@ -37,7 +37,7 @@ export const MEALS:Meal[] = [
     nutritionals: calculateTotalNutrition([INGREDIENTS[3]])
   },
   {
-    ingredients: [INGREDIENTS[3],INGREDIENTS[4],INGREDIENTS[5]],
+    ingredients: [INGREDIENTS[4],INGREDIENTS[5],INGREDIENTS[6]],
     name: "kotlet schabowy z ziemniakami i mizeria ",
     type: MealType.Dinner,
     nutritionals: calculateTotalNutrition([INGREDIENTS[3],INGREDIENTS[4],INGREDIENTS[5]])
