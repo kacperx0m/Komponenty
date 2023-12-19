@@ -10,4 +10,6 @@
 -- INSERT INTO User(username, password, name, weight, height, age, goal, gender, activity_level) VALUES('admin', 'admin', 'Admin', 90, 190, 22, 'urzymać', 'mężczyzna', 1)
 -- INSERT INTO Nutrition VALUES('kcal'), ('tłuszcz'), ('węglowodany'), ('białko') 
 
--- SELECT * FROM User
+-- ALTER TABLE User DROP COLUMN activity_level
+
+SELECT * FROM User

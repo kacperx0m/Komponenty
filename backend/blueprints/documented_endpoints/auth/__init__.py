@@ -21,10 +21,10 @@ userModel = authNamespace.model('User data', {
     'age': fields.Integer(),
     'goal': fields.String(),
     'gender': fields.String(),
-    'activity_level': fields.Integer()
+    'activity_level': fields.String()
 })
 
-userModelWithId = authNamespace.model('User data', {
+userModelWithId = authNamespace.model('User data with id', {
     'id': fields.Integer(),
     'username': fields.String(),
     'password': fields.String(),
@@ -34,7 +34,7 @@ userModelWithId = authNamespace.model('User data', {
     'age': fields.Integer(),
     'goal': fields.String(),
     'gender': fields.String(),
-    'activity_level': fields.Integer()
+    'activity_level': fields.String()
 })
 
 messageModel = authNamespace.model('Response message', {

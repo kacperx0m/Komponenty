@@ -25,6 +25,10 @@ export class AuthService {
   login(params: any) {
     return this.http.post("http://localhost:5000/auth/login", params);
   }
+
+  register(params: any) {
+    return this.http.post("http://localhost:5000/auth/register", params);
+  }
 }
 
 export const LoginGuard: CanActivateFn = (

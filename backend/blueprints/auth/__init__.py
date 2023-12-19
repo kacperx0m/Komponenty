@@ -51,7 +51,7 @@ def register():
         message = "Account exists"
     else:
         sqlreq = f"INSERT INTO User(username, password, name, weight, height, age, goal, gender, activity_level)\
-                  VALUES ('{username}', '{password}', '{name}', {weight}, {height}, {age}, '{goal}', '{gender}', {activity_level})"
+                  VALUES ('{username}', '{password}', '{name}', {weight}, {height}, {age}, '{goal}', '{gender}', '{activity_level}')"
         cursor.execute(sqlreq)
         con.commit()
         con.close()
@@ -86,7 +86,7 @@ def editUser():
             con.close()
             message = "Username occupied by another user"
         else:
-            sqlreq = f"UPDATE User SET username = '{username}', password = '{password}', name = '{name}', weight = {weight}, height = {height}, age = {age}, goal = '{goal}', gender = '{gender}', activity_level = {activity_level} WHERE id = {user_id}"
+            sqlreq = f"UPDATE User SET username = '{username}', password = '{password}', name = '{name}', weight = {weight}, height = {height}, age = {age}, goal = '{goal}', gender = '{gender}', activity_level = '{activity_level}' WHERE id = {user_id}"
             cursor.execute(sqlreq)
             con.commit()
             con.close()

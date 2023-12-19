@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { User } from '../../data/models/user';
 import { Router } from '@angular/router';
-import { CalculateService } from 'src/app/services/calculate/calculate.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-form',
@@ -10,7 +9,7 @@ import { CalculateService } from 'src/app/services/calculate/calculate.service';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit{
-  user: User;
+  user: any;
   reactiveForm: FormGroup; //teraz bez bledu bo ustawione w tsconfig json
   passwordPattern = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,30}$/;
   isSubmitted = false;
@@ -30,35 +29,32 @@ export class FormComponent implements OnInit{
       });
   }
 
-  constructor(private router: Router, private calculateService: CalculateService){}
+  constructor(private router: Router, private auth: AuthService){}
 
 
   // do optymalizacji
   onSubmit() {
     this.isSubmitted = true;
     if (this.reactiveForm.valid){
-      //Object.assign(this.user, this.reactiveForm.value);
-
-      this.user = new User(
-        this.reactiveForm.get('name').value,
-        this.reactiveForm.get('weight').value,
-        this.reactiveForm.get('height').value,
-        this.reactiveForm.get('age').value,
-        this.reactiveForm.get('goal').value,
-        this.reactiveForm.get('gender').value,
-        this.reactiveForm.get('activityLevel').value
-      );
-
-      this.user.Username = this.reactiveForm.get('username').value;
-      this.user.Password = this.reactiveForm.get('password').value;
-
-      this.calculateService.calculateBMI(this.user.weight, this.user.height);
-      this.calculateService.calculateBMR(this.user.gender, this.user.age, this.user.weight, this.user.height);
-      this.calculateService.calculateTDEE(this.user.activityLevel, this.user.gender, this.user.weight, this.user.height, this.user.age);
-
-      this.calculateService.setUser(this.user);
-
-      this.router.navigate(['/login']);
+      this.user = {
+        'username': this.reactiveForm.get('username').value,
+        'password': this.reactiveForm.get('password').value,
+        'name': this.reactiveForm.get('name').value,
+        'weight': +this.reactiveForm.get('weight').value,
+        'height': +this.reactiveForm.get('height').value,
+        'age': +this.reactiveForm.get('age').value,
+        'goal': this.reactiveForm.get('goal').value,
+        'gender': this.reactiveForm.get('gender').value,
+        'activity_level': this.reactiveForm.get('activityLevel').value
+      }
+      this.auth.register(this.user).subscribe((resposne) => {
+        if (resposne['message'] == 'Ok') {
+          alert('Udało się utworzyć konto');
+          this.router.navigate(['/login']);
+        } else {
+          alert(resposne['message'])
+        }
+      })      
     } else {
       console.log("formularz jest bledny");
     }
