@@ -9,6 +9,7 @@ import { bmiCategory } from 'src/app/data/enums/bmiCategory.enum';
 export class CalculateService {
 
   user: User = new User(
+      1,
       'John Doe',
       70,
       175,

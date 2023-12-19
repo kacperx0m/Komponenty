@@ -95,7 +95,7 @@
     <img src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png" alt="avatar">{{user.Username}}
     <span class="edit" (click)="edit()" *ngIf="!editing">[edytuj]</span>
     <span class="save" (click)="save()" *ngIf="editing">[zapisz]</span>
-    <a routerLink="../login" class="logout">[wyloguj]</a>
+    <a class="logout" (click)="logout()">[wyloguj]</a>
     <br>
     Dzisiejsze posiłki:
     <app-meal (mealSelect)="onMealSelected($event)"></app-meal>

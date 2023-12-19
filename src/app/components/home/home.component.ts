@@ -7,6 +7,8 @@ import { Meal } from 'src/app/data/models/meal';
 import { nutritionType } from 'src/app/data/enums/nutritionType.enum';
 import { IngredientService } from 'src/app/services/ingredient.service';
 import { Ingredient } from 'src/app/data/models/ingredient';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -28,10 +30,11 @@ export class HomeComponent implements OnInit{
   goals = Object.values(Goal);
   selectedMeals: Meal[] = [];
   totalMealCalories: number = 0;
+  params: any;
 
   isRightPanelOpen: boolean = true;
 
-  constructor(private calculateService: CalculateService, private ingredientService: IngredientService) {}
+  constructor(private calculateService: CalculateService, private ingredientService: IngredientService, private authService: AuthService, private router: Router) {}
 
   tempHeight: number;
   tempWeight: number;
@@ -40,7 +43,7 @@ export class HomeComponent implements OnInit{
   ingredients: Ingredient[] = [];
 
   ngOnInit(): void {
-    this.user = this.calculateService.getUser();
+    this.user = this.authService.user;
     console.log(this.user);
 
     this.tempHeight = this.user.height;
@@ -146,7 +149,6 @@ export class HomeComponent implements OnInit{
   // @ViewChild('activitySelect') activitySelect: any;
 
   save() {
-    this.editing = false;
     this.user.goal = this.tempGoal;
     this.user.height = this.tempHeight;
     this.user.weight = this.tempWeight;
@@ -156,8 +158,33 @@ export class HomeComponent implements OnInit{
     this.userTDEE = this.calculateService.calculateTDEE(this.user.activityLevel, this.user.gender, this.user.weight, this.user.height, this.user.age);
     this.jakasKategoriaCzyCos = this.calculateService.categorizeWeight(this.userBMI);
     this.goalCalories = this.calculateService.calculateGoal(this.user.goal);
-    //this.userCalories = this.calculateService.calculatePercentage(1234, this.goalCalories);
-    //this.userCalories = this.calculateService.updateCalories();
     this.updateUserCalories();
+
+    this.params = {
+      'id': this.authService.user.id,
+      'username': this.authService.user.Username,
+      'password': this.authService.user.Password,
+      'name': this.authService.user.name,
+      'weight': this.authService.user.weight,
+      'height': this.authService.user.height,
+      'age': this.authService.user.age,
+      'goal': this.authService.user.goal,
+      'gender': this.authService.user.gender,
+      'activity_level': this.authService.user.activityLevel
+    }
+
+    this.authService.update(this.params).subscribe((response) => {
+      if (response['message'] == 'Ok') {
+        this.editing = false;
+      } else {
+        alert(response['message']);
+      }
+    })
+    
+  }
+
+  logout() {
+    this.authService.user = null;
+    this.router.navigate(['/login']);
   }
 }

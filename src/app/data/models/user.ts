@@ -3,6 +3,7 @@ import { Goal } from "../enums/goal.enum";
 export class User {
     private username: string;
     private password: string;
+    id: number;
     name?: string;
     weight?: number;
     height?: number;
@@ -11,9 +12,10 @@ export class User {
     gender?: string;
     activityLevel?: string;
 
-    constructor(name: string, weight: number, height: number, age: number, goal: Goal, gender: string, activityLevel: string) {
+    constructor(id: number, name: string, weight: number, height: number, age: number, goal: Goal, gender: string, activityLevel: string) {
         // this.username = username;
         // this.password = password;
+        this.id = id;
         this.name = name;
         this.weight = weight;
         this.height = height;

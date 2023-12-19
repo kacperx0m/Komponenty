@@ -37,7 +37,9 @@ export class LoginComponent {
       this.authService.login(this.params).subscribe((response) => {
         if (response['id'] != null) {
           this.authService.isLoggedIn=true;
-          this.authService.user = new User(response['name'], response['weight'], response['height'], response['age'], response['goal'], response['gender'], response['activity_level'])
+          this.authService.user = new User(response['id'], response['name'], response['weight'], response['height'], response['age'], response['goal'], response['gender'], response['activity_level'])
+          this.authService.user.Username = response['username']
+          this.authService.user.Password = response['password']
           this.router.navigate(['/home']);
         } else {
           alert('Zły login lub hasło');
