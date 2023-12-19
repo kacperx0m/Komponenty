@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../data/models/user';
-import { CalculateService } from 'src/app/services/calculate/calculate.service';
 import { bmiCategory } from 'src/app/data/enums/bmiCategory.enum';
 import { Goal } from 'src/app/data/enums/goal.enum';
 import { Meal } from 'src/app/data/models/meal';
@@ -34,7 +33,7 @@ export class HomeComponent implements OnInit{
 
   isRightPanelOpen: boolean = true;
 
-  constructor(private calculateService: CalculateService, private ingredientService: IngredientService, private authService: AuthService, private router: Router) {}
+  constructor(private ingredientService: IngredientService, private authService: AuthService, private router: Router) {}
 
   tempHeight: number;
   tempWeight: number;
@@ -44,22 +43,21 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
     this.user = this.authService.user;
-    console.log(this.user);
 
     this.tempHeight = this.user.height;
     this.tempWeight = this.user.weight;
     this.tempGoal = this.user.goal;
     this.tempActivity = this.user.activityLevel;
-  //  this.getIngredient('Budyn');
+    //  this.getIngredient('Budyn');
     this.getIngredients();
 
     // do testow
-    this.userBMI = this.calculateService.calculateBMI(this.user.weight, this.user.height);//this.calculateService.bmi;
-    this.userBMR = this.calculateService.calculateBMR(this.user.gender, this.user.weight, this.user.height, this.user.age);//.bmr;
-    this.userTDEE = this.calculateService.calculateTDEE(this.user.activityLevel, this.user.gender, this.user.weight, this.user.height, this.user.age);//.tdee;
-    this.jakasKategoriaCzyCos = this.calculateService.categorizeWeight(this.userBMI);
-    this.goalCalories = this.calculateService.calculateGoal(this.user.goal);
-   this.userCaloriesPercentage = this.calculateService.updateCalorie(0);
+    this.userBMI = this.user.bmi;//this.calculateService.bmi;
+    this.userBMR = this.user.bmr;//.bmr;
+    this.userTDEE = this.user.tdee;//.tdee;
+    this.jakasKategoriaCzyCos = this.user.weightCategory;
+    this.goalCalories = this.user.goalCalories;
+    this.userCaloriesPercentage = this.user.calories;
   }
 
   // getIngredient(ingredientName: string) {
@@ -136,9 +134,9 @@ export class HomeComponent implements OnInit{
 
 
   private updateUserCalories() {
-    this.userCalories = this.calculateService.updateCalorie(this.totalMealCalories);
+    this.userCalories = this.user.updateCalorie(this.totalMealCalories);
    // this.userCaloriesPercentage = this.userCalories / 100;
-    this.userCaloriesPercentage = this.calculateService.calculatePercentage(this.totalMealCalories, this.goalCalories);
+    this.userCaloriesPercentage = this.user.calculatePercentage(this.totalMealCalories, this.goalCalories);
 
   }
 
@@ -153,11 +151,11 @@ export class HomeComponent implements OnInit{
     this.user.height = this.tempHeight;
     this.user.weight = this.tempWeight;
     this.user.activityLevel = this.tempActivity;
-    this.userBMI = this.calculateService.calculateBMI(this.user.weight, this.user.height);
-    this.userBMR = this.calculateService.calculateBMR(this.user.gender, this.user.weight, this.user.height, this.user.age);
-    this.userTDEE = this.calculateService.calculateTDEE(this.user.activityLevel, this.user.gender, this.user.weight, this.user.height, this.user.age);
-    this.jakasKategoriaCzyCos = this.calculateService.categorizeWeight(this.userBMI);
-    this.goalCalories = this.calculateService.calculateGoal(this.user.goal);
+    this.userBMI = this.user.calculateBMI(this.user.weight, this.user.height);
+    this.userBMR = this.user.calculateBMR(this.user.gender, this.user.weight, this.user.height, this.user.age);
+    this.userTDEE = this.user.calculateTDEE(this.user.activityLevel, this.user.gender, this.user.weight, this.user.height, this.user.age);
+    this.jakasKategoriaCzyCos = this.user.categorizeWeight(this.userBMI);
+    this.goalCalories = this.user.calculateGoal(this.user.goal);
     this.updateUserCalories();
 
     this.params = {
